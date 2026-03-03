@@ -5,14 +5,13 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade)
+Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade) : _name(name)
 {
 	std::cout << "Parametrised constructor called" << std::endl;
-	_name = name;
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException;
+		throw GradeTooLowException("Bureaucrat " + _name + "'s grade already lowest");
 	else if (grade < 1)
-		throw Bureaucrat::GradeTooHighException;
+		throw GradeTooHighException("Bureaucrat " + _name + "'s grade already highest");
 	else
 		_grade = grade;
 }
@@ -22,28 +21,32 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& orig)
+Bureaucrat::Bureaucrat(const Bureaucrat& orig) : _name(orig._name), _grade(orig._grade)
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Bureaucrat&	Bureaucrat::operator<<(const Bureaucrat& orig)
+Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& orig)
 {
-	std::cout << _name << "bureaucrat grade" << _grade << std::endl;
-	if (this != orig&)
-	{
-		_name = orig._name;
-		_grade = orig._name;
-	}
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &orig)
+		_grade = orig._grade;
 	return (*this);
 }
 
-const std::string	Bureaucrat::getName()
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& orig)
+{
+	std::string	message = orig.getName() + " bureacrat grade " + std::to_string(orig.getGrade());
+	os << message;
+	return (os);
+}
+
+const std::string	Bureaucrat::getName() const
 {
 	return (_name);
 }
 
-unsigned int	Bureaucrat::getgrade()
+unsigned int	Bureaucrat::getGrade() const
 {
 	return (_grade);
 }
@@ -51,11 +54,21 @@ unsigned int	Bureaucrat::getgrade()
 void	Bureaucrat::incrementGrade()
 {
 	_grade -= 1;
+	if (_grade < 1)
+	{
+		_grade = 1;
+		throw GradeTooHighException("Bureaucrat " + _name + "'s grade already highest");
+	}
 }
 
 void	Bureaucrat::decrementGrade()
 {
 	_grade += 1;
+	if (_grade > 150)
+	{
+		_grade = 150;
+		throw GradeTooLowException("Bureaucrat " + _name + "'s grade already lowest");
+	}
 }
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string message)
@@ -63,9 +76,9 @@ Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string messa
 	_message = message;	
 }
 
-const char*	Bureaucrat::GradeTooLowException::what()
+const char*	Bureaucrat::GradeTooHighException::what() const noexcept
 {
-	return (_message.c_string);
+	return (_message.c_str());
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string message)
@@ -73,7 +86,7 @@ Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string message
 	_message = message;	
 }
 
-const char*	Bureaucrat::GradeTooLowException::what()
+const char*	Bureaucrat::GradeTooLowException::what() const noexcept
 {
-	return (_message.c_string);
+	return (_message.c_str());
 }
