@@ -38,7 +38,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& orig)
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& orig)
 {
-	std::string	message = orig.getName() + " bureacrat grade " + std::to_string(orig.getGrade());
+	std::string	message = orig.getName() + " bureaucrat grade " + std::to_string(orig.getGrade());
 	os << message;
 	return (os);
 }
@@ -102,6 +102,6 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "Bureaucrat: " + this->_name + " couldn't sign form " + form.getName() + " because " << e.what() << std::endl;
+		std::cout << "Bureaucrat: " + this->_name + " couldn't sign form " + form.getName() + " because" << e.what() << std::endl;
 	}
 }
