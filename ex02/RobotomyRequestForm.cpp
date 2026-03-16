@@ -29,12 +29,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void	RobotomyRequestForm::beExecuted() const
 {
 	std::cout << "*OBNOXIOUS DRILLING NOISES*" << std::endl;
-	if(randomChance(.50))
+	if(rand() % 2 == 0)
 	{
 		std::cout << _target + " robotomized successfully." << std::endl;
 	}
 	else
 	{
-		std::cout << "Robotomy failed." << std::endl;
+		std::cout << " failed to be robotomized." << std::endl;
 	}
 }

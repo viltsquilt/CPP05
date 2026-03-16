@@ -28,17 +28,31 @@ int	main(void)
 	try
 	{
 		Bureaucrat	a("Jenni", 10);
-		Bureaucrat	d("Miika", 12);
-		Bureaucrat	b("Joa", 5);
 		ShrubberyCreationForm	tree("shrub");
+		a.signForm(tree);
+		a.executeForm(tree);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	b("Miika", 12);
 		PresidentialPardonForm	pardon("Jenni");
+		b.signForm(pardon);
+		b.executeForm(pardon);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat	d("Joa", 5);
 		RobotomyRequestForm	drill("Joa");
 		d.signForm(drill);
-		b.signForm(pardon);
-		a.signForm(tree);
 		d.executeForm(drill);
-		b.executeForm(pardon);
-		a.executeForm(tree);
 	}
 	catch (std::exception &e)
 	{

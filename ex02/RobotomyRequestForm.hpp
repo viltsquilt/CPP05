@@ -1,6 +1,5 @@
 #pragma once
 
-#include <random.h>
 #include "AForm.hpp"
 
 class	RobotomyRequestForm : public AForm
