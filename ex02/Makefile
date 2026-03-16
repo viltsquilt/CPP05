@@ -1,7 +1,7 @@
 NAME = bureaucrat
 CXX = c++
 CFLAGS = -std=c++20 -Wall -Wextra -Werror
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 O_DIR = objects
 

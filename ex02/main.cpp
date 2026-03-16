@@ -1,4 +1,7 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void)
 {
@@ -25,14 +28,17 @@ int	main(void)
 	try
 	{
 		Bureaucrat	a("Jenni", 10);
-		Bureaucrat	d("Miika", 120);
-		Bureaucrat	b("Joa", 100);
-		Form	form("Vin Diesel-themed Valentine's Day card for Joa", 120, 50);
-		Form	form1("Hatsune Miku body pillow gift-gard for Peter", 150, 100);
-		Form	form2("a confession detailing how she doesn't actually even like Taylor Swift that much.", 100, 50);
-		d.signForm(form);
-		b.signForm(form1);
-		a.signForm(form2);
+		Bureaucrat	d("Miika", 12);
+		Bureaucrat	b("Joa", 5);
+		ShrubberyCreationForm	tree("shrub");
+		PresidentialPardonForm	pardon("Jenni");
+		RobotomyRequestForm	drill("Joa");
+		d.signForm(drill);
+		b.signForm(pardon);
+		a.signForm(tree);
+		d.executeForm(drill);
+		b.executeForm(pardon);
+		a.executeForm(tree);
 	}
 	catch (std::exception &e)
 	{
