@@ -23,7 +23,6 @@ Intern::~Intern()
 
 AForm*	Intern::makeForm(const std::string name, const std::string target)
 {
-	std::string	level = name;
 	std::string	levels[3]
 	{
 		"presidential pardon",
@@ -33,7 +32,7 @@ AForm*	Intern::makeForm(const std::string name, const std::string target)
 	int	count = 0;
 	for (int i = 0; i < 3; i++)
 	{
-		if (level == levels[i])
+		if (name == levels[i])
 			count = i + 1;
 	}
 	switch (count)

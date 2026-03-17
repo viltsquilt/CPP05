@@ -2,10 +2,10 @@
 
 int	main(void)
 {
-	AForm*	rrf;
-	AForm*	scf;
-	AForm*	ppf;
-	AForm*	rand;
+	AForm*	rrf = NULL;
+	AForm*	scf = NULL;
+	AForm*	ppf = NULL;
+	AForm*	rand = NULL;
 	try
 	{
 		Bureaucrat	a("Jenni", 2);
@@ -64,9 +64,13 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	delete rrf;
-	delete scf;
-	delete ppf;
-	delete rand;
+	if (rrf)
+		delete rrf;
+	if (scf)
+		delete scf;
+	if (ppf)
+		delete ppf;
+	if (rand)
+		delete rand;
 	return (0);
 }
