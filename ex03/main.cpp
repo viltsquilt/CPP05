@@ -64,13 +64,9 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	if (rrf)
-		delete rrf;
-	if (scf)
-		delete scf;
-	if (ppf)
-		delete ppf;
-	if (rand)
-		delete rand;
+	delete rrf;
+	delete scf;
+	delete ppf;
+	delete rand;
 	return (0);
 }
