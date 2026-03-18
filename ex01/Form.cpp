@@ -2,12 +2,11 @@
 
 Form::Form() : _name("name"), _sign(false), _signGrade(1), _executeGrade(1)
 {
-	std::cout << "Form default constructor called" << std::endl;
+
 }
 
 Form::Form(const std::string &name, const int signGrade, const int executeGrade) : _name(name), _sign(false), _signGrade(signGrade), _executeGrade(executeGrade)
 {
-	std::cout << "Form parametrized constructor called" << std::endl;
 	if (_signGrade < 1)
 	{
 		throw GradeTooHighException("Form " + _name + 
@@ -32,12 +31,11 @@ Form::Form(const std::string &name, const int signGrade, const int executeGrade)
 
 Form::Form(const Form& orig) : _name(orig._name), _sign(orig._sign), _signGrade(orig._signGrade), _executeGrade(orig._executeGrade)
 {
-	std::cout << "Form copy constructor called" << std::endl;
+
 }
 
 Form&	Form::operator=(const Form& orig)
 {
-	std::cout << "Form copy assignment operator called" << std::endl;
 	if (this != &orig)
 		_sign = false;
 	return (*this);
@@ -45,7 +43,7 @@ Form&	Form::operator=(const Form& orig)
 
 Form::~Form()
 {
-	std::cout << "Form destructor called" << std::endl;
+
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& orig)

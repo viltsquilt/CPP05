@@ -2,17 +2,16 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(target, 72, 45), _target(target)
 {
-	std::cout << "Robotomy Request Form parametrised constructor called" << std::endl;
+
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& orig) : AForm(orig), _target(orig._target)
 {
-	std::cout << "Form copy constructor called" << std::endl;
+
 }
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& orig)
 {
-	std::cout << "Robotomy Request Form copy assignment operator called" << std::endl;
 	if (this != &orig)
 	{
 		AForm::operator=(orig);
@@ -23,7 +22,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << "Robotomy Request Form destructor called" << std::endl;
+
 }
 
 void	RobotomyRequestForm::beExecuted() const

@@ -2,13 +2,11 @@
 
 int	main(void)
 {
-	AForm*	rrf = NULL;
-	AForm*	scf = NULL;
-	AForm*	ppf = NULL;
-	AForm*	rand = NULL;
 	try
 	{
 		Bureaucrat	a("Jenni", 2);
+		AForm*	rrf;
+		AForm*	rrf2;
 		a.decrementGrade();
 		std::cout << a << std::endl;
 		a.incrementGrade();
@@ -21,8 +19,13 @@ int	main(void)
 		std::cout << b << std::endl;
 		Intern	someRandomIntern;
 		rrf = someRandomIntern.makeForm("robotomy request", "Joa");
+		rrf2 = someRandomIntern.makeForm("robotomy request", "Joa");
 		b.signForm(*rrf);
 		b.executeForm(*rrf);
+		b.signForm(*rrf2);
+		b.executeForm(*rrf2);
+		delete rrf;
+		delete rrf2;
 	}
 	catch (std::exception &e)
 	{
@@ -31,10 +34,12 @@ int	main(void)
 	try
 	{
 		Bureaucrat	a("Jenni", 10);
+		AForm*	scf;
 		Intern	someRandomIntern;
 		scf = someRandomIntern.makeForm("shrubbery creation", "trees");
 		a.signForm(*scf);
 		a.executeForm(*scf);
+		delete scf;
 	}
 	catch (std::exception &e)
 	{
@@ -43,10 +48,12 @@ int	main(void)
 	try
 	{
 		Bureaucrat	b("Miika", 4);
+		AForm*	ppf;
 		Intern	someRandomIntern;
 		ppf = someRandomIntern.makeForm("presidential pardon", "Joa");
 		b.signForm(*ppf);
 		b.executeForm(*ppf);
+		delete ppf;
 	}
 	catch (std::exception &e)
 	{
@@ -55,18 +62,16 @@ int	main(void)
 	try
 	{
 		Bureaucrat	d("Joa", 5);
+		AForm*	rand;
 		Intern	someRandomIntern;
 		rand = someRandomIntern.makeForm("gabagool", "Ayyy");
 		d.signForm(*rand);
 		d.executeForm(*rand);
+		delete rand;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	delete rrf;
-	delete scf;
-	delete ppf;
-	delete rand;
 	return (0);
 }
